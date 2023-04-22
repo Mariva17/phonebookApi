@@ -1,2 +1,5 @@
-package api.addresses;public class AddressesApi {
+package api.addresses;
+
+public class AddressesApi {
+    
 }

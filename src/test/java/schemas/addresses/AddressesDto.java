@@ -1,2 +1,5 @@
-package schemas.addresses;public class AddressesDto {
+package schemas.addresses;
+
+public class AddressesDto {
+    
 }
