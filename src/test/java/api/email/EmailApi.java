@@ -16,7 +16,15 @@ public class EmailApi extends ApiBase {
     public EmailDto randomDataBodyForCreateEmail() {
         dto = new EmailDto();
         dto.setEmail("m_vhhhh@gmail.com");
-        dto.setContactId(4374);
+        dto.setContactId(4805);
+        return dto;
+    }
+
+    public EmailDto randomDataBodyForEditEmail(Integer emailId) {
+        dto = new EmailDto();
+        dto.setId(emailId);
+        dto.setEmail("mar_bag_b@gmail.com");
+        dto.setContactId(4805);
         return dto;
     }
 
@@ -26,40 +34,30 @@ public class EmailApi extends ApiBase {
         return response;
     }
 
-    public Response getEmail(Integer code, int contactId) {
+    public Response getEmail(Integer code, int emailId) {
         String endPoint = "/api/email/{id}";
+        response = getRequestWithParam(endPoint, code, emailId);
+        return response;
+    }
+
+    public Response getEmailWithParam(Integer code, int contactId) {
+        String endPoint = "/api/email/{contactId}/all";
         response = getRequestWithParam(endPoint, code, contactId);
         return response;
     }
 
-//    public EmailDto randomDataBodyForEditEmail(Integer emailId) {
-//        dto = new EmailDto();
-//        dto.setEmailId(emailId);
-//        dto.setEmail("m-b@ghhjj");
-//        return dto;
-//    }
-//
-//    public Response createContact(Integer code) {
-//        String endPoint = "/api/contact/";
-//        response = postRequest(endPoint, code, randomDataBodyForCreateContact());
-//        return response;
-//    }
-//
-//    public void editExistingContact(Integer code, Integer contactId) {
-//        String endPoint = "/api/contact/";
-//        putRequest(endPoint, code, randomDataBodyForEditContact(contactId));
-//
-//    }
-//
-//    public void deleteExistingContact(Integer code, int contactId) {
-//        String endPoint = "/api/contact/{id}";
-//        deleteRequest(endPoint, code, contactId);
-//    }
-//
-//    public Response getContact(Integer code, int contactId) {
-//        String endPoint = "/api/contact/{id}";
-//        response = getRequestWithParam(endPoint, code, contactId);
-//        return response;
-//    }
+
+    public void editExistingEmail(Integer code, Integer emailId) {
+        String endPoint = "/api/email/";
+        putRequest(endPoint, code, randomDataBodyForEditEmail(emailId));
+
+    }
+
+    public void deleteExistingEmail(Integer code, int emailId) {
+        String endPoint = "/api/email/{id}";
+        deleteRequest(endPoint, code, emailId);
+
+    }
+
 
 }
