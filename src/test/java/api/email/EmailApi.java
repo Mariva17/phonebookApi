@@ -40,11 +40,11 @@ public class EmailApi extends ApiBase {
         return response;
     }
 
-    //   public Response getEmailWithParam(Integer code, int contactId) {
-//        String endPoint = "/api/email/{contactId}/all";
-    //       response = getRequestWithParam(endPoint, code, contactId);
-    //       return response;
-    //  }
+    public Response getEmailWithParam(Integer code, int contactId) {
+        String endPoint = "/api/email/{contactId}/all";
+        response = getRequestWithParam(endPoint, code, contactId);
+        return response;
+    }
 
 
     public void editExistingEmail(Integer code, Integer emailId) {
