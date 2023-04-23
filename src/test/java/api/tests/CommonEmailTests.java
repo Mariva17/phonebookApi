@@ -10,7 +10,7 @@ public class CommonEmailTests extends EmailApi {
     @Test
     public void createEditDeleteNewEmail() {
         createEmail(201);
-        Response actualResponse = getEmail(200, 579);
+        Response actualResponse = getEmail(200, 575);
         Assert.assertEquals(actualResponse.jsonPath().getString("email"), randomDataBodyForCreateEmail().getEmail(), "Email not equal");
 
 
