@@ -1,11 +1,14 @@
 package api.tests;
 
 import api.contact.ContactApi;
+import api.helpers.ContactHelper;
 import io.restassured.response.Response;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class CommonContactTests extends ContactApi {
+
+    ContactHelper contactHelper = new ContactHelper();
 
     @Test
     public void createEditDeleteNewContact() {
@@ -34,10 +37,6 @@ public class CommonContactTests extends ContactApi {
         Assert.assertEquals(actualEditedResponse.jsonPath().getString("description"), randomDataBodyForEditContact(contactId).getDescription(), "Description not equal");
 
         // 3. Удаляем существующий контакт
-        deleteExistingContact(200, contactId);
-
-        Response actualDeletedResponse = getContact(500, contactId);
-        Assert.assertEquals(actualDeletedResponse.jsonPath().getString("message"), "Error! This contact doesn't exist in our DB");
-
+        contactHelper.deleteContact(contactId);
     }
 }

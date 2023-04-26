@@ -13,30 +13,30 @@ public class EmailApi extends ApiBase {
 
     Faker faker = new Faker();
 
-    public EmailDto randomDataBodyForCreateEmail() {
+    public EmailDto randomDataBodyForCreateEmail(Integer contactId) {
         dto = new EmailDto();
         dto.setEmail("m_baktr@gmail.com");
-        dto.setContactId(4911);
+        dto.setContactId(contactId);
         return dto;
     }
 
-    public EmailDto randomDataBodyForEditEmail(Integer emailId) {
+    public EmailDto randomDataBodyForEditEmail(Integer emailId, Integer contactId) {
         dto = new EmailDto();
         dto.setId(emailId);
         dto.setEmail("mar_bag_b22@gmail.com");
-        dto.setContactId(4911);
+        dto.setContactId(contactId);
         return dto;
     }
 
-    public Response createEmail(Integer code) {
+    public void createEmail(Integer code, Integer contactId) {
         String endPoint = "/api/email/";
-        response = postRequest(endPoint, code, randomDataBodyForCreateEmail());
-        return response;
+        response = postRequest(endPoint, code, randomDataBodyForCreateEmail(contactId));
+
     }
 
-    public Response getEmails(Integer code) {
+    public Response getEmails(Integer code, Integer contactId) {
         String endPoint = "/api/email/{id}/all";
-        response = getRequestWithParam(endPoint, code, 4911);
+        response = getRequestWithParam(endPoint, code, contactId);
         return response;
     }
 
@@ -47,9 +47,9 @@ public class EmailApi extends ApiBase {
     }
 
 
-    public void editExistingEmail(Integer code, Integer emailId) {
+    public void editExistingEmail(Integer code, Integer emailId, Integer contactId) {
         String endPoint = "/api/email/";
-        putRequest(endPoint, code, randomDataBodyForEditEmail(emailId));
+        putRequest(endPoint, code, randomDataBodyForEditEmail(emailId, contactId));
 
     }
 

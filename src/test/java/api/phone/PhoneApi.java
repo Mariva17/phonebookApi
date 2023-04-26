@@ -12,32 +12,32 @@ public class PhoneApi extends ApiBase {
 
     Faker faker = new Faker();
 
-    public PhoneDto randomDataBodyForCreatePhone() {
+    public PhoneDto randomDataBodyForCreatePhone(Integer contactId) {
         dto = new PhoneDto();
         dto.setCountryCode("+49");
-        dto.setPhoneNumber("175222222");
-        dto.setContactId(4911);
+        dto.setPhoneNumber("1752777990");
+        dto.setContactId(contactId);
         return dto;
     }
 
-    public PhoneDto randomDataBodyForEditPhone(Integer phoneId) {
+    public PhoneDto randomDataBodyForEditPhone(Integer phoneId, Integer contactId) {
         dto = new PhoneDto();
         dto.setId(phoneId);
         dto.setCountryCode("+49");
-        dto.setPhoneNumber("175111555");
-        dto.setContactId(4911);
+        dto.setPhoneNumber("1751115012");
+        dto.setContactId(contactId);
         return dto;
     }
 
-    public Response createPhone(Integer code) {
+    public Response createPhone(Integer code, Integer contactId) {
         String endPoint = "/api/phone/";
-        response = postRequest(endPoint, code, randomDataBodyForCreatePhone());
+        response = postRequest(endPoint, code, randomDataBodyForCreatePhone(contactId));
         return response;
     }
 
-    public Response getAllPhones(Integer code) {
+    public Response getAllPhones(Integer code, Integer contactId) {
         String endPoint = "/api/phone/{id}/all";
-        response = getRequestWithParam(endPoint, code, 4911);
+        response = getRequestWithParam(endPoint, code, contactId);
         return response;
     }
 
@@ -48,9 +48,9 @@ public class PhoneApi extends ApiBase {
     }
 
 
-    public void editExistingPhone(Integer code, Integer phoneId) {
+    public void editExistingPhone(Integer code, Integer phoneId, Integer contactId) {
         String endPoint = "/api/phone/";
-        putRequest(endPoint, code, randomDataBodyForEditPhone(phoneId));
+        putRequest(endPoint, code, randomDataBodyForEditPhone(phoneId, contactId));
 
     }
 
