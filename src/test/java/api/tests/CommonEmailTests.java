@@ -4,9 +4,8 @@ import api.email.EmailApi;
 import api.helpers.EmailHelper;
 import org.testng.annotations.Test;
 
-public class CommonEmailTests {
+public class CommonEmailTests extends EmailApi {
 
-    EmailApi emailApi = new EmailApi();
     Integer contactId = 4911;
 
     EmailHelper emailHelper = new EmailHelper();

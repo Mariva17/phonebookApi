@@ -28,7 +28,7 @@ public class EmailApi extends ApiBase {
         return dto;
     }
 
-    public void createEmail(Integer code, Integer contactId) {
+    public void createNewEmail(Integer code, Integer contactId) {
         String endPoint = "/api/email/";
         response = postRequest(endPoint, code, randomDataBodyForCreateEmail(contactId));
 
